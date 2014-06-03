@@ -69,18 +69,10 @@
     Message: <textarea name="comment" id="comment" rows="4"></textarea>
     <p>Rating:</p>
     <p>
-
-	<input type="radio" name="rating" value="1">1  
-	<input type="radio" name="rating" value="2">2
-	<input type="radio" name="rating" value="3">3
-	<input type="radio" name="rating" value="4">4
-	<input type="radio" name="rating" value="5">5
-	<input type="radio" name="rating" value="6">6
-	<input type="radio" name="rating" value="7">7
-	<input type="radio" name="rating" value="8">8
-	<input type="radio" name="rating" value="9">9
-	<input type="radio" name="rating" value="10">10  
-    
+    {% for rate in RATING_CHOICES %}
+        <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
+        <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{ rate.0|pluralize }}</label><br />
+    {% endfor %}
     </p>
     <input type="submit" value="Review" />
 </form>

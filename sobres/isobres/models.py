@@ -78,12 +78,12 @@ class Alumne(models.Model):
 		
 
 class Review (models.Model):
-	RATING_CHOICES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'))
-
+	RATING_CHOICES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'),(6,'6'),(7,'7'),(8,'8'),(9,'9'),(10,'10'))
+<<<<<<< HEAD
 	rating = models.PositiveSmallIntegerField('Ratings (stars)', blank=True, default=5, choices=RATING_CHOICES)
-
-	#rating = models.PositiveSmallIntegerField('Ratings (stars)', blank=False, default=5, choices=RATING_CHOICES)
-
+=======
+	rating = models.PositiveSmallIntegerField('Ratings (stars)', blank=False, default=5, choices=RATING_CHOICES)
+>>>>>>> 3061a37bf6c9ee03a76a5fc1edad3a42d18c258d
 	comment = models.TextField(blank=True, null=True)
 	user = models.ForeignKey(User, default=get_default_user)
 	date = models.DateField(default=date.today)

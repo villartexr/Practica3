@@ -12,8 +12,8 @@ class AlumneSerializer(HyperlinkedModelSerializer):
 		model = Alumne
 		fields = ('url', 'name', 'nif', 'country', 'city', 'curs', 'user')
 
-class AlumneReviewSerializer(HyperlinkedModelSerializer):
-	url = HyperlinkedIdentityField(view_name='alumnereview-detail')
+class AlumneReviewSerializer(HiperlinkedModelSerializer):
+	url = HiperlinkedIdentifyField(view_name='alumnereview-detail')
 	alumne = HyperlinkedRelatedField(view_name='alumnereview-detail')
 	user = CharField(read_only=True)
 	class Meta:
