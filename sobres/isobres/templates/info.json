@@ -1,0 +1,244 @@
+{
+    "content": [
+        {
+            "content": {
+                "content": {
+                    "text": "Informacio de la Base de Dades"
+                }, 
+                "type": "title"
+            }, 
+            "type": "head"
+        }, 
+        {
+            "content": [
+                {
+                    "content": [
+                        {
+                            "text": "Titulacions existens"
+                        }, 
+                        {
+                            "text": "\r\n\t{% if titulacio %}\r\n\t"
+                        }
+                    ], 
+                    "type": "h1"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "\r\n\t{% for t in titulacio %}\r\n\t\t"
+                        }, 
+                        {
+                            "content": [
+                                {
+                                    "text": "\r\n\t\t{{t.name}}-{{t.faculty}}\r\n\t\t"
+                                }, 
+                                {
+                                    "text": "\r\n\t{% endfor %}\r\n\t"
+                                }
+                            ], 
+                            "type": "li"
+                        }
+                    ], 
+                    "type": "ul"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "No titulacions."
+                        }, 
+                        {
+                            "text": "\r\n\t{% endif %}\r\n\t"
+                        }
+                    ], 
+                    "type": "p"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "Cursos existens"
+                        }, 
+                        {
+                            "text": "\r\n\t{% if curs %}\r\n\t"
+                        }
+                    ], 
+                    "type": "h1"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "\r\n\t{% for c in curs %}\r\n\t\t"
+                        }, 
+                        {
+                            "content": [
+                                {
+                                    "text": "\r\n\t\t{{c.year}}-{{c.titulacio}}\r\n\t\t"
+                                }, 
+                                {
+                                    "text": "\r\n\t{% endfor %}\r\n\t"
+                                }
+                            ], 
+                            "type": "li"
+                        }
+                    ], 
+                    "type": "ul"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "No Cursos."
+                        }, 
+                        {
+                            "text": "\r\n\t{% endif %}\r\n\t"
+                        }
+                    ], 
+                    "type": "p"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "Aules existens"
+                        }, 
+                        {
+                            "text": "\r\n\t{% if aula %}\r\n\t"
+                        }
+                    ], 
+                    "type": "h1"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "\r\n\t{% for a in aula %}\r\n\t\t"
+                        }, 
+                        {
+                            "content": [
+                                {
+                                    "text": "\r\n\r\n\t\t{{a.name}}"
+                                }, 
+                                {
+                                    "type": "br"
+                                }, 
+                                {
+                                    "type": "br"
+                                }, 
+                                {
+                                    "type": "br"
+                                }
+                            ], 
+                            "type": "li"
+                        }
+                    ], 
+                    "type": "ul"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "No aules."
+                        }, 
+                        {
+                            "text": "\r\n\t{% endif %}\r\n\t"
+                        }
+                    ], 
+                    "type": "p"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "Alumnes existens"
+                        }, 
+                        {
+                            "text": "\r\n\t{% if alumne %}\r\n\t"
+                        }
+                    ], 
+                    "type": "h1"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "\r\n\t{% for a in alumne %}\r\n\t\t"
+                        }, 
+                        {
+                            "content": [
+                                {
+                                    "text": "\r\n\t\t{{a.name}}\r\n\t\t\t"
+                                }, 
+                                {
+                                    "content": {
+                                        "content": [
+                                            {
+                                                "text": "{{a.nif}}"
+                                            }, 
+                                            {
+                                                "text": "\r\n\t{% endfor %}\r\n\t"
+                                            }
+                                        ], 
+                                        "type": "li"
+                                    }, 
+                                    "type": "ul"
+                                }
+                            ], 
+                            "type": "li"
+                        }
+                    ], 
+                    "type": "ul"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "No alumnes."
+                        }, 
+                        {
+                            "text": "\r\n\t{% endif %}\r\n\t"
+                        }
+                    ], 
+                    "type": "p"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": " Professors existens"
+                        }, 
+                        {
+                            "text": "\r\n\t{% if prof %}\r\n\t"
+                        }
+                    ], 
+                    "type": "h1"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "\r\n\t{% for p in prof %}\r\n\t\t"
+                        }, 
+                        {
+                            "content": [
+                                {
+                                    "text": "\r\n\r\n\t\t{{p.name}}"
+                                }, 
+                                {
+                                    "type": "br"
+                                }, 
+                                {
+                                    "type": "br"
+                                }
+                            ], 
+                            "type": "li"
+                        }
+                    ], 
+                    "type": "ul"
+                }, 
+                {
+                    "content": [
+                        {
+                            "text": "No aules."
+                        }, 
+                        {
+                            "text": "\r\n\t{% endif %}\r\n\t"
+                        }
+                    ], 
+                    "type": "p"
+                }
+            ], 
+            "type": "body"
+        }
+    ], 
+    "type": "html"
+}

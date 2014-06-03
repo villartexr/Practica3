@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>{{capcalera}}</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	<span  vocab="http://shema.org/" typeof="Persona">
+		{%if alumne%}	
+		<h1>
+		<span property="name">{{titol}} {{alumne.name}}</span>
+
+		</h1>
+		<ul>
+			<li>
+				NIF alumne: {{alumne.nif}}
+			</li>
+			<li>
+				CURS alumne: 
+				<ul>
+					{%for curs in alumne.curs.all%}
+					<li>
+						{{curs}}
+					</li>
+					{%endfor%}
+				</ul>
+			</li>
+		</ul>
+		{% if user == alumne.user%}
+			<p> <input type="button" onclick="window.location.href='{{alumne.idAlumne}}/edit/'" value="EDITAR"/></p>
+			<p> <input type="button" onclick="window.location.href='{{alumne.idAlumne}}/delete/'" value="ELIMINAR"/></p>
+		{% endif %}
+		<a href="/aalumnes/{{alumne.id}}/?format=json">Veure informació en format JSON</a>
+		<p><a href="/alumnes/"> Veure tots els alumnes </a></p>
+	{%else%}
+		<p>L'informacio de l'alumne encara no esta disponible</p>
+	{%endif%}
+	<h2>Reviews</h2>
+	{% if alumne.alumnereview_set.all|length > 0 %}
+	<span rel="aggregateRating">
+    <p typeof="AggregateRating">
+        Average rating <span property="ratingValue">{{ alumne.averageRating|stringformat:".1f" }}</span>
+        {% with alumne.alumnereview_set.all|length as reviewCount %}
+        from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
+        {% endwith %}
+    </p>
+	</span>
+	<ul rel="review">
+    {% for review in alumne.alumnereview_set.all%}
+        <li typeof="Review">
+            <p rel="reviewRating" typeof="Rating">
+                <span property="worstRating" content="{{ RATING_CHOICES.0.0 }}"></span>
+                <span property="ratingValue">{{ review.rating }}</span> star{{ review.rating|pluralize }}
+                {% with RATING_CHOICES|last as best %}
+                <span property="bestRating" content="{{ best.0 }}"></span>
+                {% endwith %}
+            </p>
+            <p property="description">{{ review.comment }}</p>
+            <p>Created by <span property="author">{{ review.user }}</span> on
+                <span property="publishDate">{{ review.date}}</span></p>
+        </li>
+    {% endfor %}
+</ul>
+	</span>
+	{% endif %}
+
+	<h3>Add Review</h3>
+	<form action="{% url 'review_create' alumne.idAlumne %}" method="post">
+    {% csrf_token %}
+    Message: <textarea name="comment" id="comment" rows="4"></textarea>
+    <p>Rating:</p>
+    <p>
+
+	<input type="radio" name="rating" value="1">1  
+	<input type="radio" name="rating" value="2">2
+	<input type="radio" name="rating" value="3">3
+	<input type="radio" name="rating" value="4">4
+	<input type="radio" name="rating" value="5">5
+	<input type="radio" name="rating" value="6">6
+	<input type="radio" name="rating" value="7">7
+	<input type="radio" name="rating" value="8">8
+	<input type="radio" name="rating" value="9">9
+	<input type="radio" name="rating" value="10">10  
+    
+    </p>
+    <input type="submit" value="Review" />
+</form>
+
+
+</body>
+</html>

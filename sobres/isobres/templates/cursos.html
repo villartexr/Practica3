@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Informacio de la Base de Dades</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	<h1>Cursos </h1>
+	{% if curs %}
+		<ul>
+		{% for c in curs %}
+			<li>
+			<a href="/cursos/{{c.id}}">{{c.year}} curs de {{c.titulacio}}</a>
+			</li>
+		{% endfor %}
+		</ul>
+		<p>Per descarregar la informacio cursos en xml cliqui <a href="/cursinfo/1/xml">aqui</a></p>
+		<p><input type="button" onclick="window.location.href='create/'" value="NOU CURS"/></p>
+	{% else %}
+		<p>No Cursos.</p>
+	{% endif %}
+</body>
+</html>

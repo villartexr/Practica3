@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+{% load staticfiles %}
+<head>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            $.getJSON("{% static "countries.json" %}", {}, function (countries) {
+                $("#id_country").autocomplete({
+                    source: countries
+                });
+            });
+            $("#id_city").autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "http://api.geonames.org/searchJSON",
+                        dataType: "jsonp",
+                        data: {
+                            featureClass: "P",
+                            maxRows: 10,
+                            name_startsWith: request.term,
+                            username: "genis"
+                        },
+                        success: function( data ) {
+                            response( $.map( data.geonames, function( item ) {
+                                return {
+                                    label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                                    value: item.name,
+                                    stateOrProvince: item.adminName1,
+                                    countryName: item.countryName
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 2,
+                select: function( event, ui ) {
+                    if (ui.item) {
+                        $("#id_stateOrProvince").val(ui.item.stateOrProvince);
+                        $("#id_country").val(ui.item.countryName);
+                        $("#id_zipCode").val("");
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+	<h1>Emplena el formulari</h1>
+	<form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Enviar"/>
+	</form>
+</body>
+</html>

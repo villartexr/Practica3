@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>{{capcalera}}</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	{%if curs%}	
+		<h1>{{titol}} {{curs.year}}</h1>
+		<ul>
+			<li>
+				Titulacio a la qual pertany: {{curs.titulacio}}
+			</li>
+		</ul>
+		{% if user == curs.user%}
+			<p> <input type="button" onclick="window.location.href='{{curs.id}}/edit/'" value="EDITAR"/></p>
+			<p> <input type="button" onclick="window.location.href='{{curs.id}}/delete/'" value="ELIMINAR"/></p>
+		{% endif %}
+		<a href="/acursos/{{curs.id}}/?format=json">Veure informació en format JSON</a>
+		<p><a href="/cursos/"> Veure tots els cursos </a></p>
+	{%else%}
+		<p>L'informacio del curs encara no esta disponible</p>
+	{%endif%}
+</body>
+</html>

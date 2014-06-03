@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>{{capcalera}}</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	{%if titulacio%}	
+		<h1>{{titol}} {{titulacio.name}}</h1>
+		<ul>
+			<li>
+				Facultat a la cual pertany: {{titulacio.faculty}}
+			</li>
+		</ul>
+		{% if user == titulacio.user%}
+			<p> <input type="button" onclick="window.location.href='{{titulacio.id}}/edit/'" value="EDITAR"/></p>
+			<p> <input type="button" onclick="window.location.href='{{titulacio.id}}/delete/'" value="ELIMINAR"/></p>
+		{% endif %}
+		<a href="/atitulacions/{{titulacio.id}}/?format=json">Veure informació en format JSON</a>
+		<p><a href="/titulacions/"> Veure totes les titulacions </a></p>
+	{%else%}
+		<p>L'informacio de la titulacio encara no esta disponible</p>
+	{%endif%}
+</body>
+</html>

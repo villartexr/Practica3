@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Informacio de la Base de Dades</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	<h1> Professors</h1>
+	{% if prof %}
+		<ul>
+			{% for p in prof %}
+				<li>
+					<a href="/professors/{{p.id}}">{{p.name}}</a>
+				</li>
+			{% endfor %}
+		</ul>
+		<p>Per descarregar la informacio de professors en xml cliqui <a href="/professorsinfo/ADE/xml">aqui</a></p>
+	{% else %}
+		<p>No professors</p>
+	{% endif %}
+</body>
+</html>
+	

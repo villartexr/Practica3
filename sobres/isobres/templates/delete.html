@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title> eliminar </title>
+	</head>
+	<body>
+
+	<h1>segur que vol eliminar?</h1>
+	<form method="post" action="">
+		{% csrf_token %}
+		<table>
+			{{ form.as_table }}
+		</table>
+		<input type="submit" value="Si"/>
+	</form>
+	<input type="button" onclick="history.back()" value="No"/>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Informacio de la Base de Dades</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	<h1>Alumnes</h1>
+	{% if alumne %}
+		<ul>
+		{% for a in alumne %}
+			<li>
+			<a href="/alumnes/{{a.idAlumne}}">{{a.name}}</a>
+			</li>
+		{% endfor %}
+		</ul>
+		<p>Per descarregar la informacio d'alumnes en xml cliqui <a href="/alumnesinfo/ADE/xml">aqui</a></p>
+		<p> <input type="button" onclick="window.location.href='create/'" value="NOU ALUMNE"/></p>
+	{% else %}
+		<p>No alumnes.</p>
+	{% endif %}
+</body>
+</html>

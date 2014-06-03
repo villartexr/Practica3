@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Informacio de la Base de Dades</title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	<h1>Aules</h1>
+	{% if aula %}
+		<ul>
+		{% for a in aula %}
+			<li>
+			<a href= "/aules/{{a.id}}">{{a.name}}</a>
+			</li>
+		{% endfor %}
+		</ul>
+		<p>Per descarregar la informacio d'aules en xml cliqui <a href="/aulesinfo/ADE/xml">aqui</a></p>
+		<p> <input type="button" onclick="window.location.href='create/'" value="NOVA AULA"/></p>
+	{% else %}
+		<p>No aules.</p>
+	{% endif %}
+</body>
+</html>

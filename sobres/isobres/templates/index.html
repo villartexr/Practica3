@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Informacio de la Base de Dades</title>
+	</head>
+	<body>
+	<h1> existens</h1>
+	{% if titulacio %}
+	<ul>
+	{% for t in titulacio %}
+		<li>
+		{{t.name}}-{{t.faculty}}
+		</li>
+	{% endfor %}
+	</ul>
+	{% else %}
+	<p>No titulacions.</p>
+	{% endif %}
+</body>
+</title>

@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>{{titlehead}} </title>
+	<link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
+</head>
+<body>
+	<h1>{{pagetitle}}</h1>
+	{%if user.username%}
+		<p>	
+			{{user.id}}
+			Benvingut {{user.username}}!
+			<br>aquí podra gestionar les aules
+		</p>
+		<h4>AFEGIR NOVES DADES:</h4>
+		<a href="alumnes/create/">Afegir alumne</a>
+		<br><a href="aules/create/">Afegir aula</a>
+		<br><a href="titulacions/create/">Afegir titulacio</a>
+		<br><a href="cursos/create/">Afegir curs</a>
+		<h4>CONSULTAR DADES:</h4>
+		<a href="alumnes/"> Alumnes </a>
+		<br><a href="aules/"> Aules </a>
+		<br><a href="titulacions/"> Titulacions</a>
+		<br><a href="cursos/"> Cursos </a>
+
+		<p> <input type="button" onclick="window.location.href='logout/'" value="Sortir"/></p>
+				
+
+		</p>
+	{%else%}
+		<p> Per entrar a la pagina ha de fer login:<br>
+		Fer <a href="/login/"> sign in</a> per gestionar les dades </p>
+
+	{%endif%}
+</body>
+</html>
